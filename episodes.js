@@ -32,7 +32,7 @@ const SHOW = {
   tagline: "powered by 北和総合技研",
   poweredBy: "北和総合技研", // フッターの帰属・著作権表記に使用
 
-  // 運営元の紹介（トップの「運営」セクションに表示）。name を空にすると非表示
+  // 協賛の紹介（トップの「協賛」セクションに表示）。name を空にすると非表示
   publisher: {
     name: "北和総合技研",
     logo: "assets/hge-logo.png",

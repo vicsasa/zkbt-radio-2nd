@@ -128,7 +128,7 @@
     background:var(--pink);flex:none;
   }
 
-  /* ---------- 運営 (北和総合技研) ---------- */
+  /* ---------- 協賛 (北和総合技研) ---------- */
   .publisher{
     display:flex;gap:20px;align-items:center;
     background:var(--surface);border:1px solid var(--border);
@@ -278,7 +278,7 @@
 
 <main class="profile wrap">
   <section id="publisher-section" hidden>
-    <div class="section-head"><h2>運営</h2></div>
+    <div class="section-head"><h2>協賛</h2></div>
     <article class="publisher">
       <div class="publisher-logo"><img id="publisher-logo-img" src="" alt="" loading="lazy" decoding="async"></div>
       <div class="publisher-body">
@@ -350,7 +350,7 @@
     .map((s) => (/更新/.test(s) ? "<b>" + esc(s.trim()) + "</b>" : esc(s.trim())))
     .join("<br>");
 
-  /* ---------- 運営 ---------- */
+  /* ---------- 協賛 ---------- */
   const pub = SHOW.publisher;
   if (pub && pub.name) {
     $("#publisher-name").textContent = pub.name;

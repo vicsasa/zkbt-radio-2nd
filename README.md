@@ -42,7 +42,7 @@ Web ラジオ「俗物ラジオ2nd」（配信: Twitch [マダム押尾](https:/
 **公式アカウントのリンク**（ページ下部に表示）は `SHOW.officialLinks` の配列で管理します。
 `{ label: "表示名", url: "https://…" }` を足し引きするだけ。空配列にすると非表示になります。
 
-**運営元の紹介**（`index.html` の「運営」セクション）は `SHOW.publisher`（`{ name, logo, desc }`）で管理します。`name` を空にするとセクションごと非表示になります。
+**協賛の紹介**（`index.html` の「協賛」セクション）は `SHOW.publisher`（`{ name, logo, desc }`）で管理します。`name` を空にするとセクションごと非表示になります。
 
 **パーソナリティ**（`index.html` に表示）は `SHOW.hosts` の配列で管理します。
 `{ name, image, role, age, bio, links: [{label,url}] }` の形。`image` は `assets/` 内の画像パス。
@@ -114,7 +114,7 @@ Twitch の埋め込みは「読み込み元ドメイン」の指定が必須で�
 | `taxi.png`          | 画面右下に薄く固定表示するウォーターマーク     |
 | `logo-white.png`    | フッターのロゴ                               |
 | `intro-logo.png`    | トップの「番組紹介」カードの見出しロゴ         |
-| `hge-logo.png`      | トップの「運営」セクションの北和総合技研ロゴ   |
+| `hge-logo.png`      | トップの「協賛」セクションの北和総合技研ロゴ   |
 | `characters.png`    | フッターのキャラクター画像                    |
 | `logo-blue.png`     | ファビコン（ブラウザのタブアイコン）          |
 | `host-oshio.png`    | プロフィールの押尾（`SHOW.hosts` から参照）    |
