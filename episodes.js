@@ -39,7 +39,7 @@ const SHOW = {
     desc: "北和総合技研は、ロジカルな安寧とテクニカルな穏やかさに基づく暮らしを目標としています。",
   },
   description:
-    "47歳と31歳がなんとなくラジオを始めてしまいました。清く正しく俗物らしく語ります。毎週日曜21:00更新予定です。",
+    "47歳と32歳がなんとなくラジオを始めてしまいました。清く正しく俗物らしく語ります。毎週日曜21:00更新予定です。",
 
   // YouTube 再生リスト
   youtubePlaylistId: "PLAyRqtGIJQes",
@@ -80,7 +80,7 @@ const SHOW = {
       name: "トロオドン",
       image: "assets/host-toroodon.png",
       role: "パーソナリティ",
-      age: "31歳",
+      age: "32歳",
       bio: "北和総合技研代表者。鉄道・戦争・歴史・人の業。それこそが人の生きる道だと信じている32歳成人男性。",
       links: [{ label: "Twitch", url: "https://www.twitch.tv/yamashiro1944" }],
     },
