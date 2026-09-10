@@ -128,6 +128,23 @@
     background:var(--pink);flex:none;
   }
 
+  /* ---------- 運営 (北和総合技研) ---------- */
+  .publisher{
+    display:flex;gap:20px;align-items:center;
+    background:var(--surface);border:1px solid var(--border);
+    border-radius:var(--radius);padding:18px;
+  }
+  .publisher-logo{
+    flex:none;width:124px;aspect-ratio:1/1;
+    border-radius:14px;overflow:hidden;border:1px solid var(--border);
+    background:linear-gradient(180deg,#fdfdfd,#eef0f4);
+    display:flex;align-items:center;justify-content:center;
+  }
+  .publisher-logo img{width:80%;height:80%;object-fit:contain}
+  .publisher-body{min-width:0}
+  .publisher-body h3{margin:0 0 7px;font-size:16.5px;font-weight:800}
+  .publisher-body p{margin:0;font-size:13px;color:var(--muted);line-height:1.95}
+
   .cast-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:20px}
   .host{
     display:flex;gap:18px;
@@ -233,6 +250,8 @@
     .site-inner{padding-top:64px;padding-bottom:24px}
     .corner{gap:12px;padding:12px}
     .corner-thumb{width:104px}
+    .publisher{flex-direction:column;text-align:center;gap:14px}
+    .publisher-logo{width:112px}
   }
   @media (prefers-reduced-motion:reduce){
     *{animation-duration:.001ms!important;transition-duration:.001ms!important}
@@ -258,6 +277,17 @@
 </div>
 
 <main class="profile wrap">
+  <section id="publisher-section" hidden>
+    <div class="section-head"><h2>運営</h2></div>
+    <article class="publisher">
+      <div class="publisher-logo"><img id="publisher-logo-img" src="" alt="" loading="lazy" decoding="async"></div>
+      <div class="publisher-body">
+        <h3 id="publisher-name"></h3>
+        <p id="publisher-desc"></p>
+      </div>
+    </article>
+  </section>
+
   <section id="cast-section">
     <div class="section-head"><h2>パーソナリティ</h2></div>
     <div class="cast-grid" id="cast-grid"></div>
@@ -319,6 +349,21 @@
   $("#show-desc").innerHTML = descSentences
     .map((s) => (/更新/.test(s) ? "<b>" + esc(s.trim()) + "</b>" : esc(s.trim())))
     .join("<br>");
+
+  /* ---------- 運営 ---------- */
+  const pub = SHOW.publisher;
+  if (pub && pub.name) {
+    $("#publisher-name").textContent = pub.name;
+    $("#publisher-desc").textContent = pub.desc || "";
+    const pl = $("#publisher-logo-img");
+    if (pub.logo) {
+      pl.src = pub.logo;
+      pl.alt = pub.name;
+    } else {
+      pl.closest(".publisher-logo").hidden = true;
+    }
+    $("#publisher-section").hidden = false;
+  }
 
   /* ---------- cast ---------- */
   const hosts = Array.isArray(SHOW.hosts) ? SHOW.hosts : [];
