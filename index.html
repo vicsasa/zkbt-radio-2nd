@@ -239,6 +239,16 @@
   .foot-official a:hover{background:var(--surface-2);color:var(--text);text-decoration:none}
   #foot-official-links{display:flex;flex-wrap:wrap;gap:9px}
 
+  .share-x{
+    display:inline-flex;align-items:center;gap:7px;
+    padding:6px 13px;border-radius:999px;
+    border:1px solid var(--border-strong);background:var(--surface);
+    color:var(--muted);font-size:12px;font-weight:600;
+    transition:background .15s,color .15s;
+  }
+  .share-x:hover{background:var(--surface-2);color:var(--text);text-decoration:none}
+  .share-x svg{width:13px;height:13px;fill:currentColor;flex:none}
+
   @media (max-width:720px){
     .cast-grid{grid-template-columns:1fr}
     .host{flex-direction:column}
@@ -316,6 +326,12 @@
     <div class="foot-official" id="foot-official" hidden>
       <span class="foot-official-label">公式アカウント</span>
       <span id="foot-official-links"></span>
+    </div>
+    <div class="foot-share">
+      <a class="share-x" id="share-x" href="#" target="_blank" rel="noopener">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+        <span>X で共有</span>
+      </a>
     </div>
     <p class="foot-note">
       <span id="footer-about"></span><br />
@@ -422,6 +438,11 @@
     ? "「" + SHOW.title + "」は" + poweredBy + "の提供・バックアップでお送りしています。"
     : "";
   $("#footer-copy").textContent = "© " + new Date().getFullYear() + (poweredBy ? " " + poweredBy : "");
+
+  const shareText = tagline ? SHOW.title + " " + tagline : SHOW.title;
+  $("#share-x").href =
+    "https://x.com/intent/tweet?text=" + encodeURIComponent(shareText) +
+    "&url=" + encodeURIComponent(location.origin + location.pathname);
 
   const officialLinks = Array.isArray(SHOW.officialLinks) ? SHOW.officialLinks : [];
   if (officialLinks.length) {
