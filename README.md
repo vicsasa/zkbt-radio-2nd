@@ -66,21 +66,22 @@ npx serve
 
 ---
 
-## GitHub Pages で公開する
+## 公開先（GitHub Pages）
 
-1. このフォルダを GitHub リポジトリにして push
-   ```powershell
-   git init
-   git add .
-   git commit -m "俗物ラジオ2nd 公式サイト 初版"
-   git branch -M main
-   git remote add origin https://github.com/<ユーザー名>/<リポジトリ名>.git
-   git push -u origin main
-   ```
-2. GitHub のリポジトリ → **Settings → Pages** →
-   *Build and deployment* の *Source* を **Deploy from a branch**、
-   Branch を **main / (root)** にして保存。
-3. 数十秒後 `https://<ユーザー名>.github.io/<リポジトリ名>/` で公開されます。
+- 公開 URL: **https://vicsasa.github.io/zkbt-radio-2nd/**
+- リポジトリ: https://github.com/vicsasa/zkbt-radio-2nd （`main` ブランチのルートを Pages で配信）
+
+### 更新のしかた
+
+`episodes.js` などを編集したら、このフォルダで:
+
+```powershell
+git add -A
+git commit -m "内容を更新"
+git push
+```
+
+push の 1 分ほど後に本番へ反映されます（ビルド状況は GitHub の Actions タブで確認できます）。
 
 ### Twitch 埋め込みについて（重要）
 
