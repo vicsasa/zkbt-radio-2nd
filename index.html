@@ -1,0 +1,391 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>俗物ラジオ2nd powered by 北和総合技研</title>
+<meta name="theme-color" content="#0e0f13" />
+<meta name="description" content="47歳と31歳がなんとなくラジオを始めてしまいました。清く正しく俗物らしく語ります。毎週日曜21:00更新予定です。" />
+<meta property="og:title" content="俗物ラジオ2nd powered by 北和総合技研" />
+<meta property="og:description" content="47歳と31歳がなんとなくラジオを始めてしまいました。清く正しく俗物らしく語ります。毎週日曜21:00更新予定です。" />
+<meta property="og:type" content="website" />
+<meta property="og:image" content="assets/keyvisual.png" />
+<link rel="icon" href="assets/logo-blue.png" />
+<link rel="apple-touch-icon" href="assets/logo-blue.png" />
+<style>
+  :root{
+    --bg:#0e0f13;
+    --bg-2:#12131a;
+    --surface:#171922;
+    --surface-2:#1e212c;
+    --border:#2a2e3b;
+    --border-strong:#3a3f52;
+    --text:#e7e9f0;
+    --muted:#9aa1b2;
+    --muted-2:#6f7686;
+    --accent:#a970ff;
+    --accent-weak:#a970ff26;
+    --pink:#ff5aa0;
+    --yt:#ff4e45;
+    --radius:14px;
+    --shadow:0 6px 24px -8px rgba(0,0,0,.55);
+    --font:system-ui,-apple-system,"Hiragino Kaku Gothic ProN","Noto Sans JP","Yu Gothic",Meiryo,sans-serif;
+  }
+  *,*::before,*::after{box-sizing:border-box}
+  html{color-scheme:dark;overflow-x:clip}
+  body{
+    margin:0;background:var(--bg);color:var(--text);
+    font-family:var(--font);line-height:1.7;
+    -webkit-font-smoothing:antialiased;
+    position:relative;overflow-x:clip;
+  }
+  body::after{
+    content:"";position:fixed;right:-32px;bottom:-28px;
+    width:min(42vw,400px);aspect-ratio:1/1;
+    background:url("assets/taxi.png") no-repeat right bottom/contain;
+    opacity:.06;pointer-events:none;z-index:0;
+  }
+  .topvisual,main.profile,footer.site{position:relative;z-index:1}
+  a{color:var(--accent);text-decoration:none}
+  a:hover{text-decoration:underline}
+  img{display:block;max-width:100%}
+  button{font-family:inherit}
+  :focus-visible{outline:2px solid var(--accent);outline-offset:2px;border-radius:6px}
+
+  .wrap{max-width:1180px;margin:0 auto;padding:0 20px}
+
+  /* ---------- header + 番組紹介 の共通キービジュアル背景 ---------- */
+  .topvisual{
+    position:relative;
+    background:
+      linear-gradient(180deg,
+        rgba(14,15,19,.30) 0%,
+        rgba(14,15,19,.48) 34%,
+        rgba(14,15,19,.72) 66%,
+        rgba(14,15,19,.92) 86%,
+        var(--bg) 100%),
+      url("assets/keyvisual.png") center 22%/cover no-repeat,
+      #15121d;
+  }
+
+  /* ---------- header / hero (キービジュアルの余白のみ) ---------- */
+  header.site{position:relative;background:transparent}
+  .site-inner{padding-top:86px;padding-bottom:24px}
+
+  /* ---------- 番組紹介 ---------- */
+  .intro{background:transparent}
+  .intro .wrap{padding:8px 20px 48px;display:flex;justify-content:center}
+  .intro-card{
+    width:100%;max-width:640px;text-align:center;
+    background:rgba(16,18,26,.26);
+    -webkit-backdrop-filter:blur(2px);backdrop-filter:blur(2px);
+    border:1px solid rgba(255,255,255,.14);
+    border-radius:16px;padding:26px 30px 28px;
+  }
+  .intro-card h1{margin:0;font-size:0;line-height:0}
+  .intro-logo{
+    width:min(74%,272px);margin:0 auto;opacity:.98;
+    filter:drop-shadow(0 2px 10px rgba(0,0,0,.6));
+  }
+  .intro-powered{
+    margin:11px 0 0;font-weight:600;letter-spacing:.06em;
+    font-size:clamp(12px,2vw,13.5px);color:rgba(255,255,255,.86);
+    text-shadow:0 1px 8px rgba(0,0,0,.8);
+  }
+  .intro-card #show-desc{
+    margin:17px auto 0;padding-top:17px;
+    border-top:1px solid rgba(255,255,255,.14);
+    font-size:clamp(14px,2.5vw,15.5px);line-height:2.1;color:#fff;
+    text-shadow:0 1px 8px rgba(0,0,0,.8),0 0 2px rgba(0,0,0,.6);
+  }
+  .intro-card b{color:#ff8dc0;font-weight:700}
+
+  .btn{
+    display:inline-flex;align-items:center;gap:8px;
+    padding:9px 15px;border-radius:999px;
+    border:1px solid var(--border-strong);background:var(--surface);
+    color:var(--text);font-size:14px;font-weight:600;cursor:pointer;
+    transition:background .15s,border-color .15s,transform .05s;
+  }
+  .btn:hover{background:var(--surface-2);text-decoration:none}
+  .btn:active{transform:translateY(1px)}
+  .btn.primary{background:var(--accent);border-color:var(--accent);color:#160a24}
+  .btn.primary:hover{background:#b985ff}
+  .btn.big{padding:10px 18px;font-size:13.5px;border-radius:12px}
+
+  /* ---------- profile body ---------- */
+  main.profile{
+    max-width:940px;padding:40px 20px 56px;
+    display:flex;flex-direction:column;gap:38px;
+  }
+  .section-head{margin:0 0 16px}
+  .section-head h2{
+    margin:0;font-size:18px;font-weight:800;letter-spacing:.02em;
+    display:flex;align-items:center;gap:9px;
+  }
+  .section-head h2::before{
+    content:"";width:7px;height:18px;border-radius:2px;
+    background:var(--pink);flex:none;
+  }
+
+  .cast-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:20px}
+  .host{
+    display:flex;gap:18px;
+    background:var(--surface);border:1px solid var(--border);
+    border-radius:var(--radius);padding:18px;
+  }
+  .host-portrait{
+    flex:none;width:132px;height:132px;border-radius:16px;overflow:hidden;
+    background:linear-gradient(180deg,#fdfdfd,#e9ebf0);
+    border:1px solid var(--border);
+    display:flex;align-items:center;justify-content:center;
+  }
+  .host-portrait img{width:100%;height:100%;object-fit:contain}
+  .host-body{min-width:0}
+  .host-body h3{margin:0;font-size:19px;font-weight:800}
+  .host-role{
+    margin:3px 0 9px;font-size:12px;font-weight:700;
+    letter-spacing:.04em;color:var(--pink);
+  }
+  .host-bio{margin:0;font-size:13.5px;color:var(--muted);white-space:pre-wrap}
+  .host-links{display:flex;flex-wrap:wrap;gap:8px;margin-top:13px}
+  .host-links a{
+    display:inline-flex;align-items:center;gap:6px;
+    padding:5px 12px;border-radius:999px;
+    border:1px solid var(--border-strong);background:var(--bg-2);
+    color:var(--muted);font-weight:600;font-size:12px;
+  }
+  .host-links a:hover{background:var(--surface-2);color:var(--text);text-decoration:none}
+
+  /* ---------- corners ---------- */
+  .corner-list{display:flex;flex-direction:column;gap:12px}
+  .corner{
+    display:flex;gap:15px;align-items:center;
+    background:var(--surface);border:1px solid var(--border);
+    border-radius:var(--radius);padding:13px;
+  }
+  .corner-thumb{
+    flex:none;width:112px;aspect-ratio:1/1;display:block;
+    border-radius:10px;overflow:hidden;border:1px solid var(--border);background:#0b0c10;
+  }
+  .corner-thumb img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .2s}
+  a.corner-thumb:hover img{transform:scale(1.04)}
+  .corner-body{min-width:0}
+  .corner-body h3{margin:0 0 5px;font-size:15px;font-weight:800;line-height:1.4}
+  .corner-body p{margin:0;font-size:12.5px;color:var(--muted);line-height:1.75}
+  .corner-link{
+    display:inline-flex;align-items:center;gap:5px;margin-top:10px;
+    padding:5px 12px;border-radius:999px;
+    border:1px solid var(--border-strong);background:var(--bg-2);
+    color:var(--muted);font-weight:600;font-size:12px;
+  }
+  .corner-link:hover{background:var(--surface-2);color:var(--text);text-decoration:none}
+
+  /* ---------- archive call-to-action ---------- */
+  .to-archive{
+    display:flex;align-items:center;justify-content:space-between;gap:20px;
+    flex-wrap:wrap;
+    background:var(--surface);
+    border:1px solid var(--border);border-radius:var(--radius);
+    padding:20px 22px;
+  }
+  .to-archive .ta-text{min-width:220px}
+  .to-archive h2{margin:0 0 5px;font-size:16px;font-weight:800}
+  .to-archive p{margin:0;color:var(--muted);font-size:13px;max-width:52ch}
+
+  /* ---------- footer ---------- */
+  footer.site{
+    border-top:1px solid var(--border);padding:34px 0 58px;
+    color:var(--muted-2);font-size:12.5px;
+    background:linear-gradient(180deg,var(--bg) 0%,#141019 100%);
+  }
+  footer.site a{color:var(--muted)}
+  .foot-inner{display:flex;flex-direction:column;gap:18px}
+  .foot-brand{display:flex;align-items:center;gap:24px;flex-wrap:wrap}
+  .foot-logo{width:min(58vw,210px);height:auto;opacity:.92}
+  .foot-chars{
+    width:min(52vw,230px);height:auto;border-radius:12px;
+    border:1px solid var(--border);
+  }
+  .foot-note{margin:0}
+  .foot-official{display:flex;flex-wrap:wrap;align-items:center;gap:9px 12px}
+  .foot-official .foot-official-label{
+    font-size:11px;font-weight:700;letter-spacing:.08em;color:var(--muted-2);
+  }
+  .foot-official a{
+    display:inline-flex;align-items:center;gap:6px;
+    padding:5px 12px;border-radius:999px;
+    border:1px solid var(--border-strong);background:var(--surface);
+    color:var(--muted);font-weight:600;font-size:12px;
+    transition:background .15s,color .15s;
+  }
+  .foot-official a:hover{background:var(--surface-2);color:var(--text);text-decoration:none}
+  #foot-official-links{display:flex;flex-wrap:wrap;gap:9px}
+
+  @media (max-width:720px){
+    .cast-grid{grid-template-columns:1fr}
+    .host{flex-direction:column}
+    .host-portrait{width:100%;height:210px}
+    .to-archive{flex-direction:column;align-items:stretch}
+    .to-archive .btn.big{justify-content:center}
+  }
+  @media (max-width:560px){
+    .site-inner{padding-top:64px;padding-bottom:24px}
+    .corner{gap:12px;padding:12px}
+    .corner-thumb{width:104px}
+  }
+  @media (prefers-reduced-motion:reduce){
+    *{animation-duration:.001ms!important;transition-duration:.001ms!important}
+  }
+</style>
+</head>
+<body>
+
+<div class="topvisual">
+  <header class="site">
+    <div class="wrap site-inner"></div>
+  </header>
+
+  <div class="intro">
+    <div class="wrap">
+      <div class="intro-card">
+        <h1><img class="intro-logo" src="assets/intro-logo.png" alt="俗物ラジオ2nd" /></h1>
+        <p class="intro-powered" id="intro-powered"></p>
+        <p id="show-desc"></p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<main class="profile wrap">
+  <section id="cast-section">
+    <div class="section-head"><h2>パーソナリティ</h2></div>
+    <div class="cast-grid" id="cast-grid"></div>
+  </section>
+
+  <section id="corner-section">
+    <div class="section-head"><h2>コーナー</h2></div>
+    <div class="corner-list" id="corner-list"></div>
+  </section>
+
+  <section class="to-archive">
+    <div class="ta-text">
+      <h2>配信アーカイブ</h2>
+      <p>過去の放送はすべて YouTube にアーカイブしています。出演者・タグでの絞り込みや検索は一覧ページからどうぞ。</p>
+    </div>
+    <a class="btn primary big" href="archive.html">アーカイブ一覧を見る →</a>
+  </section>
+</main>
+
+<footer class="site">
+  <div class="wrap foot-inner">
+    <div class="foot-brand">
+      <img class="foot-logo" src="assets/logo-white.png" alt="俗物ラジオ2nd" loading="lazy" />
+      <img class="foot-chars" src="assets/characters.png" alt="俗物ラジオ2nd の出演キャラクター" loading="lazy" />
+    </div>
+    <div class="foot-official" id="foot-official" hidden>
+      <span class="foot-official-label">公式アカウント</span>
+      <span id="foot-official-links"></span>
+    </div>
+    <p class="foot-note">
+      <span id="footer-about"></span><br />
+      <span id="footer-copy"></span>
+    </p>
+  </div>
+</footer>
+
+<noscript>
+  <div class="wrap" style="padding:40px 20px">
+    このページは JavaScript を有効にすると内容が表示されます。
+    <a href="archive.html">アーカイブ一覧はこちら</a>。
+  </div>
+</noscript>
+
+<script src="episodes.js"></script>
+<script>
+(function () {
+  "use strict";
+  const $ = (s, el = document) => el.querySelector(s);
+  const esc = (s) =>
+    String(s).replace(/[&<>"']/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]));
+
+  const tagline = SHOW.tagline || "";
+  const poweredBy = SHOW.poweredBy || "";
+
+  document.title = tagline ? SHOW.title + " " + tagline : SHOW.title;
+  $("#intro-powered").textContent = tagline;
+
+  const descSentences = (SHOW.description || "").split(/(?<=。)/).filter(Boolean);
+  $("#show-desc").innerHTML = descSentences
+    .map((s) => (/更新/.test(s) ? "<b>" + esc(s.trim()) + "</b>" : esc(s.trim())))
+    .join("<br>");
+
+  /* ---------- cast ---------- */
+  const hosts = Array.isArray(SHOW.hosts) ? SHOW.hosts : [];
+  if (!hosts.length) {
+    $("#cast-section").hidden = true;
+  } else {
+    $("#cast-grid").innerHTML = hosts
+      .map((h) => {
+        const links = (h.links || [])
+          .map((l) => `<a href="${esc(l.url)}" target="_blank" rel="noopener">${esc(l.label)} ↗</a>`)
+          .join("");
+        const meta = [h.age, h.role].filter(Boolean).map(esc).join("・");
+        return `<article class="host">
+            <div class="host-portrait">
+              <img src="${esc(h.image)}" alt="${esc(h.name)}" loading="lazy" decoding="async">
+            </div>
+            <div class="host-body">
+              <h3>${esc(h.name)}</h3>
+              ${meta ? `<p class="host-role">${meta}</p>` : ""}
+              <p class="host-bio">${esc(h.bio || "")}</p>
+              ${links ? `<div class="host-links">${links}</div>` : ""}
+            </div>
+          </article>`;
+      })
+      .join("");
+  }
+
+  /* ---------- corners ---------- */
+  const corners = Array.isArray(SHOW.corners) ? SHOW.corners : [];
+  if (!corners.length) {
+    $("#corner-section").hidden = true;
+  } else {
+    $("#corner-list").innerHTML = corners
+      .map((c) => {
+        const openTag = c.url
+          ? `<a class="corner-thumb" href="${esc(c.url)}" target="_blank" rel="noopener">`
+          : `<span class="corner-thumb">`;
+        const closeTag = c.url ? "</a>" : "</span>";
+        const link = c.url
+          ? `<a class="corner-link" href="${esc(c.url)}" target="_blank" rel="noopener">投稿フォームへ ↗</a>`
+          : "";
+        return `<article class="corner">
+            ${openTag}<img src="${esc(c.image)}" alt="${esc(c.title)}" loading="lazy" decoding="async">${closeTag}
+            <div class="corner-body">
+              <h3>${esc(c.title)}</h3>
+              <p>${esc(c.desc || "")}</p>
+              ${link}
+            </div>
+          </article>`;
+      })
+      .join("");
+  }
+
+  /* ---------- footer ---------- */
+  $("#footer-about").textContent = poweredBy
+    ? "「" + SHOW.title + "」は" + poweredBy + "がお届けする Web ラジオ番組です。"
+    : "";
+  $("#footer-copy").textContent = "© " + new Date().getFullYear() + (poweredBy ? " " + poweredBy : "");
+
+  const officialLinks = Array.isArray(SHOW.officialLinks) ? SHOW.officialLinks : [];
+  if (officialLinks.length) {
+    $("#foot-official-links").innerHTML = officialLinks
+      .map((l) => `<a href="${esc(l.url)}" target="_blank" rel="noopener">${esc(l.label)}</a>`)
+      .join("");
+    $("#foot-official").hidden = false;
+  }
+})();
+</script>
+</body>
+</html>
