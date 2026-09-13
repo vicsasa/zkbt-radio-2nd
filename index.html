@@ -23,9 +23,12 @@
     --text:#e7e9f0;
     --muted:#9aa1b2;
     --muted-2:#6f7686;
-    --accent:#a970ff;
-    --accent-weak:#a970ff26;
-    --pink:#ff5aa0;
+    --accent:#4f74c9;
+    --accent-hover:#6a90e0;
+    --accent-weak:#4f74c926;
+    --on-accent:#0c1526;
+    --yellow:#f2c94c;
+    --yellow-weak:#f2c94c26;
     --yt:#ff4e45;
     --radius:14px;
     --shadow:0 6px 24px -8px rgba(0,0,0,.55);
@@ -98,7 +101,7 @@
     font-size:clamp(14px,2.5vw,15.5px);line-height:2.1;color:#fff;
     text-shadow:0 1px 8px rgba(0,0,0,.8),0 0 2px rgba(0,0,0,.6);
   }
-  .intro-card b{color:#ff8dc0;font-weight:700}
+  .intro-card b{color:#ffde85;font-weight:700}
 
   .btn{
     display:inline-flex;align-items:center;gap:8px;
@@ -109,8 +112,8 @@
   }
   .btn:hover{background:var(--surface-2);text-decoration:none}
   .btn:active{transform:translateY(1px)}
-  .btn.primary{background:var(--accent);border-color:var(--accent);color:#160a24}
-  .btn.primary:hover{background:#b985ff}
+  .btn.primary{background:var(--accent);border-color:var(--accent);color:var(--on-accent)}
+  .btn.primary:hover{background:var(--accent-hover)}
   .btn.big{padding:10px 18px;font-size:13.5px;border-radius:12px}
 
   /* ---------- 配信 (Twitch) パネル ---------- */
@@ -125,10 +128,10 @@
     display:inline-flex;align-items:center;gap:7px;font-weight:700;font-size:14px;
   }
   .twitch-head .live-tag::before{
-    content:"";width:9px;height:9px;border-radius:50%;background:var(--accent);
-    box-shadow:0 0 0 0 var(--accent-weak);animation:pulse 2s infinite;
+    content:"";width:9px;height:9px;border-radius:50%;background:var(--yellow);
+    box-shadow:0 0 0 0 var(--yellow-weak);animation:pulse 2s infinite;
   }
-  @keyframes pulse{0%{box-shadow:0 0 0 0 var(--accent-weak)}70%{box-shadow:0 0 0 10px transparent}100%{box-shadow:0 0 0 0 transparent}}
+  @keyframes pulse{0%{box-shadow:0 0 0 0 var(--yellow-weak)}70%{box-shadow:0 0 0 10px transparent}100%{box-shadow:0 0 0 0 transparent}}
   .twitch-head .note{color:var(--muted);font-size:13px;flex:1 1 240px;min-width:0}
   .twitch-embed{background:#000;aspect-ratio:16/9;border-top:1px solid var(--border)}
   .twitch-embed iframe{width:100%;height:100%;border:0;display:block}
@@ -145,7 +148,7 @@
   }
   .section-head h2::before{
     content:"";width:7px;height:18px;border-radius:2px;
-    background:var(--pink);flex:none;
+    background:var(--yellow);flex:none;
   }
 
   /* ---------- 協賛 (北和総合技研) ---------- */
@@ -161,9 +164,17 @@
     display:flex;align-items:center;justify-content:center;
   }
   .publisher-logo img{width:80%;height:80%;object-fit:contain}
+  .publisher-logo a{display:flex;width:100%;height:100%;align-items:center;justify-content:center}
   .publisher-body{min-width:0}
   .publisher-body h3{margin:0 0 7px;font-size:16.5px;font-weight:800}
   .publisher-body p{margin:0;font-size:13px;color:var(--muted);line-height:1.95}
+  .publisher-link{
+    display:inline-flex;align-items:center;gap:5px;margin-top:12px;
+    padding:5px 12px;border-radius:999px;
+    border:1px solid var(--border-strong);background:var(--bg-2);
+    color:var(--muted);font-weight:600;font-size:12px;
+  }
+  .publisher-link:hover{background:var(--surface-2);color:var(--text);text-decoration:none}
 
   .cast-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:20px}
   .host{
@@ -182,7 +193,7 @@
   .host-body h3{margin:0;font-size:19px;font-weight:800}
   .host-role{
     margin:3px 0 9px;font-size:12px;font-weight:700;
-    letter-spacing:.04em;color:var(--pink);
+    letter-spacing:.04em;color:var(--yellow);
   }
   .host-bio{margin:0;font-size:13.5px;color:var(--muted);white-space:pre-wrap}
   .host-links{display:flex;flex-wrap:wrap;gap:8px;margin-top:13px}
@@ -322,10 +333,11 @@
   <section id="publisher-section" hidden>
     <div class="section-head"><h2>協賛</h2></div>
     <article class="publisher">
-      <div class="publisher-logo"><img id="publisher-logo-img" src="" alt="" loading="lazy" decoding="async"></div>
+      <div class="publisher-logo" id="publisher-logo"><img id="publisher-logo-img" src="" alt="" loading="lazy" decoding="async"></div>
       <div class="publisher-body">
         <h3 id="publisher-name"></h3>
         <p id="publisher-desc"></p>
+        <a class="publisher-link" id="publisher-link" href="#" target="_blank" rel="noopener" hidden>公式サイトへ ↗</a>
       </div>
     </article>
   </section>
@@ -409,6 +421,13 @@
       pl.alt = pub.name;
     } else {
       pl.closest(".publisher-logo").hidden = true;
+    }
+    if (pub.url) {
+      const link = $("#publisher-link");
+      link.href = pub.url;
+      link.hidden = false;
+      $("#publisher-logo").innerHTML =
+        `<a href="${esc(pub.url)}" target="_blank" rel="noopener">${$("#publisher-logo").innerHTML}</a>`;
     }
     $("#publisher-section").hidden = false;
   }

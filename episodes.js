@@ -37,6 +37,7 @@ const SHOW = {
     name: "北和総合技研",
     logo: "assets/hge-logo.png",
     desc: "北和総合技研は、ロジカルな安寧とテクニカルな穏やかさに基づく暮らしを目標としています。",
+    url: "https://hokuwa-general-engineering-1.jimdosite.com/",
   },
   description:
     "47歳と32歳がなんとなくラジオを始めてしまいました。清く正しく俗物らしく語ります。毎週日曜21:00更新予定です。",

@@ -23,8 +23,12 @@
     --text:#e7e9f0;
     --muted:#9aa1b2;
     --muted-2:#6f7686;
-    --accent:#a970ff;         /* Twitch purple */
-    --accent-weak:#a970ff26;
+    --accent:#4f74c9;         /* 俗物ラジオ2nd キーカラー(紺) */
+    --accent-hover:#6a90e0;
+    --accent-weak:#4f74c926;
+    --on-accent:#0c1526;
+    --yellow:#f2c94c;
+    --yellow-weak:#f2c94c26;
     --yt:#ff4e45;             /* YouTube red   */
     --radius:14px;
     --shadow:0 6px 24px -8px rgba(0,0,0,.55);
@@ -90,8 +94,8 @@
   .btn .dot{width:9px;height:9px;border-radius:50%}
   .btn.yt .dot{background:var(--yt)}
   .btn.tw .dot{background:var(--accent)}
-  .btn.primary{background:var(--accent);border-color:var(--accent);color:#160a24}
-  .btn.primary:hover{background:#b985ff}
+  .btn.primary{background:var(--accent);border-color:var(--accent);color:var(--on-accent)}
+  .btn.primary:hover{background:var(--accent-hover)}
 
   /* ---------- layout: sidebar + results ---------- */
   .layout{
@@ -146,9 +150,9 @@
   .chip:hover{color:var(--text);border-color:var(--muted-2)}
   .chip .count{color:var(--muted-2);font-weight:500}
   .chip[aria-pressed="true"]{
-    background:var(--accent-weak);border-color:var(--accent);color:#e9dcff;
+    background:var(--accent-weak);border-color:var(--accent);color:#dce6ff;
   }
-  .chip[aria-pressed="true"] .count{color:#c9b3f0}
+  .chip[aria-pressed="true"] .count{color:#b9cdf2}
 
   .status-row{
     display:flex;flex-direction:column;gap:8px;align-items:flex-start;
@@ -207,7 +211,7 @@
     border:1px solid var(--border);color:var(--muted);cursor:pointer;
   }
   .card .card-chips span:hover{color:var(--text);border-color:var(--muted-2)}
-  .card .card-chips span.person{background:#221a30;border-color:#3a2d52;color:#d5c4f2}
+  .card .card-chips span.person{background:#1c2436;border-color:#33456e;color:#c9d8fb}
   .card .desc{
     font-size:13px;color:var(--muted);margin:0;white-space:pre-wrap;
     display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden;
