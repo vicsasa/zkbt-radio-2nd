@@ -116,6 +116,15 @@ const SHOW = {
 
 const EPISODES = [
   {
+    number: 6,
+    title: "俗物ラジオ2nd【押尾＆トロオドン】No 6",
+    date: "2026-09-20",
+    youtubeId: "K3qdv_b5V9A",
+    people: ["押尾", "トロオドン"],
+    tags: [],
+    description: "",
+  },
+  {
     number: 5,
     title: "俗物ラジオ2nd【押尾＆トロオドン】No 5",
     date: "2026-09-13",
