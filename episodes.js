@@ -59,6 +59,7 @@ const SHOW = {
   officialLinks: [
     { label: "X（@zkbt_radio_2nd）", url: "https://x.com/zkbt_radio_2nd" },
     { label: "gorone.xyz（@zkbt_radio_2nd）", url: "https://gorone.xyz/@zkbt_radio_2nd" },
+    { label: "Spotify（Podcast）", url: "https://open.spotify.com/show/6yDlrc5GtJZxFKSePAXMMr" },
   ],
 
   // Twitch 埋め込みプレイヤーに必要な「親ドメイン」。
