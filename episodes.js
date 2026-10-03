@@ -60,6 +60,7 @@ const SHOW = {
     { label: "X（@zkbt_radio_2nd）", url: "https://x.com/zkbt_radio_2nd" },
     { label: "gorone.xyz（@zkbt_radio_2nd）", url: "https://gorone.xyz/@zkbt_radio_2nd" },
     { label: "Spotify（Podcast）", url: "https://open.spotify.com/show/6yDlrc5GtJZxFKSePAXMMr" },
+    { label: "グッズ（SUZURI）", url: "https://suzuri.jp/Zokubutsuradio_2nd/products" },
   ],
 
   // Twitch 埋め込みプレイヤーに必要な「親ドメイン」。
