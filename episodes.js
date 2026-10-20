@@ -44,7 +44,7 @@ const SHOW = {
 
   // YouTube 再生リスト
   youtubePlaylistId: "PLAyRqtGIJQes",
-  youtubePlaylistUrl: "https://www.youtube.com/playlist?list=PLAyRqtGIJQes",
+  youtubePlaylistUrl: "https://www.youtube.com/watch?v=lIcrmQgLQqI&list=PLAyRqtGIJQes",
 
   // Twitch チャンネル
   twitchChannel: "oshio_games",

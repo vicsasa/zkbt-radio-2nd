@@ -1,7 +1,7 @@
 # 俗物ラジオ2nd powered by 北和総合技研
 
 Web ラジオ「俗物ラジオ2nd」（配信: Twitch [マダム押尾](https://www.twitch.tv/oshio_games) /
-アーカイブ: [YouTube 再生リスト](https://www.youtube.com/playlist?list=PLAyRqtGIJQes)）の
+アーカイブ: [YouTube 再生リスト](https://www.youtube.com/watch?v=lIcrmQgLQqI&list=PLAyRqtGIJQes)）の
 公式サイト。ビルド不要の静的サイトです。
 
 - **2 ページ構成**:
